@@ -5,8 +5,8 @@ var fs = require('fs');
 function HelloWorldPlugin(options) {
   var self = this;
 
-  self.filePath = path.join(__dirname, options.path);
-  self.newPath = path.join(__dirname, options.outputPath);
+  self.filePath = options.path;
+  self.newPath = options.outputPath;
 }
 
 HelloWorldPlugin.prototype.apply = function(compiler) {
