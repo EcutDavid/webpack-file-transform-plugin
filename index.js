@@ -12,7 +12,7 @@ function FileTransform(options) {
 FileTransform.prototype.apply = function(compiler) {
   var self = this
   compiler.plugin('done', function() {
-    fs.exists(self.filePath, (exists) => {
+    fs.exists(self.filePath, function(exists) {
       if (exists) {
         function handleReanmeException(e) {
           if (e) {
