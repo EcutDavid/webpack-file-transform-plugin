@@ -2,14 +2,14 @@ var path = require('path')
 var fs = require('fs')
 
 
-function HelloWorldPlugin(options) {
+function FileTransform(options) {
   var self = this
 
   self.filePath = options.path
   self.newPath = options.outputPath
 }
 
-HelloWorldPlugin.prototype.apply = function(compiler) {
+FileTransform.prototype.apply = function(compiler) {
   var self = this
   compiler.plugin('done', function() {
     fs.exists(self.filePath, (exists) => {
@@ -27,4 +27,4 @@ HelloWorldPlugin.prototype.apply = function(compiler) {
   })
 }
 
-module.exports = HelloWorldPlugin
+module.exports = FileTransform
