@@ -3,10 +3,8 @@ var fs = require('fs')
 
 
 function FileTransform(options) {
-  var self = this
-
-  self.filePath = options.path
-  self.newPath = options.outputPath
+  this.filePath = options.path
+  this.newPath = options.outputPath
 }
 
 FileTransform.prototype.apply = function(compiler) {
@@ -16,12 +14,12 @@ FileTransform.prototype.apply = function(compiler) {
       if (exists) {
         function handleReanmeException(e) {
           if (e) {
-            console.log('task directory not exists: ' + self.newPath)
+            console.warn('task directory not exists: ' + self.newPath)
           }
         }
         fs.rename(self.filePath, self.newPath, handleReanmeException)
       }else {
-        console.log('file not exists: ' + self.filePath)
+        console.warn('file not exists: ' + self.filePath)
       }
     })
   })
